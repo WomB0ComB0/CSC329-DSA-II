@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class MinPriorityQueue {
+
     private int[] heap;
     private int size;
     private int capacity;
@@ -12,10 +13,18 @@ public class MinPriorityQueue {
     }
 
     // Helper methods to get parent and child indices
-    private int parent(int i) { return (i - 1) / 2; }
-    private int leftChild(int i) { return 2 * i + 1; }
-    private int rightChild(int i) { return 2 * i + 2; }
-    
+    private int parent(int i) {
+        return (i - 1) / 2;
+    }
+
+    private int leftChild(int i) {
+        return 2 * i + 1;
+    }
+
+    private int rightChild(int i) {
+        return 2 * i + 2;
+    }
+
     // Helper method to swap two elements in the heap
     private void swap(int i, int j) {
         int temp = heap[i];
@@ -76,20 +85,20 @@ public class MinPriorityQueue {
         int smallest = i;
         int left = leftChild(i);
         int right = rightChild(i);
-        
+
         if (left < size && heap[left] < heap[smallest]) {
             smallest = left;
         }
         if (right < size && heap[right] < heap[smallest]) {
             smallest = right;
         }
-        
+
         if (smallest != i) {
             swap(i, smallest);
             heapifyDown(smallest);
         }
     }
-    
+
     public boolean isEmpty() {
         return size == 0;
     }
